@@ -1,25 +1,39 @@
+// JQuery function
 $(function () {
+  // variables
+  //save button  variable
   var SaveItem = $(".saveBtn");
+  // un strings and   pulls data from local storage and puts it into a variable
   var eventInfo = JSON.parse(localStorage.getItem("events")) || {};
 
+  // triggers store events on save button click
   SaveItem.on("click", storeEvents);
 
+  // for in loop that iterates over the properties of eventInfo object
   for (const key in eventInfo) {
+    //grabs the id of event and test area and combines them
     var timeBlock = $("#" + key).children()[1];
+    //sets time block value equal the eventinfokey which sting data stored in memory
     timeBlock.value = eventInfo[key];
-    console.log(timeBlock);
+   // console.log(timeBlock.value);
+    // console.log(eventInfo[key]);
   }
-
+// function to store events
   function storeEvents(event) {
+  // var object 
     var eventStore = {
+      // JQuery using "this" to refer to event trigger, then using DOM to locate text value in the sibling
       event: $(this).siblings()[1].value,
+      // same as above but this time grabbing id from parent
       time: $(this).parent().attr("id"),
     };
+  // makes the eventStore time the key to the object and the value is the event info
     eventInfo[eventStore.time] = eventStore.event;
+    // converts info to string and adds it to local memory
     localStorage.setItem("events", JSON.stringify(eventInfo));
 
-    console.log(typeof eventStore.time);
-    console.log(eventStore.time);
+    // console.log(typeof eventStore.time);
+    // console.log(eventStore.time);
   }
 
   var paraDate = $("#currentDay");
@@ -38,12 +52,4 @@ $(function () {
       timeB.addClass("future");
     }
   }
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-
-  // TODO: Add code to display the current date in the header of the page.
 });
