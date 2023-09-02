@@ -35,14 +35,18 @@ $(function () {
     // console.log(typeof eventStore.time);
     // console.log(eventStore.time);
   }
-
+// sets variable for id 
   var paraDate = $("#currentDay");
+  // sets variable for date format
   var date = dayjs().format("dddd, MMMM D, YYYY h:mm A");
+  // adds date to html
   paraDate.text(date);
 
+  //creates hour variable 
   var currentHour = dayjs().format("H");
-
+//for loop that iterates through all the hours
   for (let i = 9; i < 18; i++) {
+    //adds classes that display color to the text box elements
     var timeB = $("#hour-" + i);
     if (i < currentHour) {
       timeB.addClass("past");
