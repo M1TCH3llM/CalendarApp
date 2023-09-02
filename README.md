@@ -25,8 +25,10 @@ There are no specific system requirements for using this app. It should work on 
 Task Scheduling: Easily schedule tasks and appointments for your workday.
 Time Highlighting: Past hours are displayed in gray, the current hour is highlighted in red, and future hours are highlighted in green.
 
-#Link 
+#Link
 
 [Link to Page](https://m1tch3llm.github.io/CalendarApp/)
 
-#Photos
+#Photo
+
+![Website Photo](./Assets/WebScreenShot.png)
